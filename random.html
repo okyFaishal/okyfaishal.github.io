@@ -56,7 +56,6 @@
     function tambahData(baru) {
       const add = baru || document.getElementById('inputData').value.trim()
       const con = document.getElementById('containerData')
-      document.getElementById('pilih-acak').disabled = true
       // console.log('add', add)
       // console.log('baru', baru)
       if (add !== '') {
@@ -78,6 +77,7 @@
       document.getElementById('containerData').innerHTML = ''
     }
     async function pilihDataAcak() {
+      document.getElementById('pilih-acak').disabled = true
       const el = document.querySelectorAll('#containerData button')
       // console.log('el',el)
       //kosong kan semua 
@@ -115,6 +115,7 @@
         x.style.color = "#fff"
         }
       }
+      document.getElementById('pilih-acak').disabled = false
     }
   </script>
 </body>
