@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          text-align: center;
+          margin: 50px;
+        }
+
+        label {
+          display: block;
+          margin-bottom: 10px;
+        }
+
+        input {
+          padding: 8px;
+          margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+    </style>
+    <title>Pengacakan Data</title>
+</head>
+<body>
+
+    <h2>Pengacakan Data</h2>
+
+    <form id="dataForm">
+        <label for="inputData">Masukkan Data:</label>
+        <input type="text" id="inputData" placeholder="Masukkan data" required>
+        <button type="button" onclick="tambahData()">Tambah Data</button>
+    </form>
+
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data akan ditampilkan di sini -->
+        </tbody>
+    </table>
+
+    <button type="button" onclick="acakData()">Acak Data</button>
+    <button type="button" onclick="pilihDataAcak()">Pilih Data Acak</button>
+    <p id="result"></p>
+
+    <script>
+        let data = [];
+
+        function tambahData() {
+            const inputData = document.getElementById('inputData').value;
+            if (inputData.trim() !== '') {
+                data.push(inputData);
+                updateTable();
+                document.getElementById('inputData').value = '';
+            }
+        }
+
+        function updateTable() {
+            const tableBody = document.querySelector('#dataTable tbody');
+            tableBody.innerHTML = '';
+
+            data.forEach(item => {
+                const row = tableBody.insertRow();
+                const cell = row.insertCell(0);
+                cell.textContent = item;
+            });
+        }
+
+        function acakData() {
+            data = shuffleArray(data);
+            updateTable();
+            document.getElementById('result').textContent = '';
+        }
+
+        function pilihDataAcak() {
+            if (data.length > 0) {
+                const randomIndex = Math.floor(Math.random() * data.length);
+                const selectedData = data[randomIndex];
+                document.getElementById('result').textContent = `Data terpilih: ${selectedData}`;
+            } else {
+                document.getElementById('result').textContent = 'Tambahkan data terlebih dahulu.';
+            }
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+    </script>
+
+</body>
+</html>

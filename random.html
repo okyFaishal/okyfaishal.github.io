@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    input {
+      width: 40rem;
+    }
+    button {
+      margin: 5px 3px;
+      padding: 10px 15px;
+    }
+  </style>
+  <title>Random</title>
+</head>
+<body>
+  <div class="text-center">
+    <h2>Random System</h2>
+    <input id="inputData" style="padding-top: 14px;" type="text" placeholder="masukkan data">
+    <button style="background-color: #19376D; width: 5rem;" onclick="tambahData()">
+      <svg style="padding-top: 2px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+      </svg>
+    </button>
+  </div>
+  <div class="text-center">
+    <button id="pilih-acak" onclick="pilihDataAcak()" style="width: 47rem;">Pilih Data Acak</button>
+  </div>
+  <div id="containerData" class="text-center" style="width: 47rem; height: 15rem; margin: auto; overflow: auto;">
+  </div>
+  <div id="hapus" style="text-align: center; width: 100%;">
+    <button style="background-color: #df004e; width: 47rem; border: none;" onclick="hapusData()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+      </svg>
+    </button>
+  </div>
+  <script>
+    data = []
+    start()
+    document.getElementById('inputData').addEventListener('keydown', function (e) {
+      if(e.key == 'Enter'){
+        tambahData()
+      }
+    })
+    function start() {
+      baru = JSON.parse(localStorage.getItem('list_random_system_01'))
+      // console.log('baru - 1', baru)
+      for (let i = 0; i < baru.length; i++) {
+        const x = baru[i];
+        tambahData(x)
+      }
+    }
+    function tambahData(baru) {
+      const add = baru || document.getElementById('inputData').value.trim()
+      const con = document.getElementById('containerData')
+      document.getElementById('pilih-acak').disabled = true
+      // console.log('add', add)
+      // console.log('baru', baru)
+      if (add !== '') {
+        // console.log('add', add)
+        let tag = document.createElement('button')
+        let val = document.createTextNode(add)
+        tag.appendChild(val)
+        tag.style.backgroundColor = '#19376D';
+        con.appendChild(tag)
+        document.getElementById('inputData').value = '';
+        if(!baru) {
+          data.push(add);
+          localStorage.setItem('list_random_system_01', JSON.stringify(data))
+        }
+      }
+    }
+    function hapusData() {
+      localStorage.setItem('list_random_system_01', JSON.stringify([]))
+      document.getElementById('containerData').innerHTML = ''
+    }
+    async function pilihDataAcak() {
+      const el = document.querySelectorAll('#containerData button')
+      // console.log('el',el)
+      //kosong kan semua 
+      for (let i = 0; i < el.length; i++) {
+        const x = el[i];
+        x.style.backgroundColor = "#19376D"
+      }
+      for (let i = 0; i < el.length; i++) {
+        const x = el[i];
+        x.style.backgroundColor = "#A5D7E8"
+        x.style.color = "#19376D"
+        await new Promise(resolve => setTimeout(resolve, 80));
+        x.style.backgroundColor = "#19376D"
+        x.style.color = "#fff"
+      }
+      await new Promise(resolve => setTimeout(resolve, 150));
+      for (let i = 0; i < el.length; i++) {
+        const x = el[i];
+        x.style.backgroundColor = "#A5D7E8"
+        x.style.color = "#19376D"
+        await new Promise(resolve => setTimeout(resolve, 150));
+        x.style.backgroundColor = "#19376D"
+        x.style.color = "#fff"
+      }
+      await new Promise(resolve => setTimeout(resolve, 250));
+      const acak = Math.floor(Math.random() * el.length) + 1
+      for (let i = 0; i < acak; i++) {
+        const x = el[i];
+
+        x.style.backgroundColor = "#A5D7E8"
+        x.style.color = "#19376D"
+        await new Promise(resolve => setTimeout(resolve, 250));
+        if(acak-1 != i){
+          x.style.backgroundColor = "#19376D"
+        x.style.color = "#fff"
+        }
+      }
+    }
+  </script>
+</body>
+</html>
