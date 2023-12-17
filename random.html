@@ -6,37 +6,51 @@
   <link rel="stylesheet" href="style.css">
   <style>
     input {
-      width: 40rem;
+      width: 100%;
+      /* margin: 0px; */
+      /* padding: 12px 0px; */
+      margin: 5px 3px;
+    }
+    .input{
+      display: flex;
     }
     button {
       margin: 5px 3px;
       padding: 10px 15px;
+    }
+    .container {
+      max-width: 47rem;
+      padding: 10px;
+      margin: auto; 
     }
   </style>
   <title>Random</title>
 </head>
 <body>
   <div class="text-center">
-    1
     <h2>Random System</h2>
-    <input id="inputData" style="padding-top: 14px;" type="text" placeholder="masukkan data">
-    <button style="background-color: #19376D; width: 5rem;" onclick="tambahData()">
-      <svg style="padding-top: 2px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
-      </svg>
-    </button>
   </div>
-  <div class="text-center">
-    <button id="pilih-acak" onclick="pilihDataAcak()" style="width: 47rem;">Pilih Data Acak</button>
-  </div>
-  <div id="containerData" class="text-center" style="width: 47rem; height: 15rem; margin: auto; overflow: auto;">
-  </div>
-  <div id="hapus" style="text-align: center; width: 100%;">
-    <button style="background-color: #df004e; width: 47rem; border: none;" onclick="hapusData()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
-      </svg>
-    </button>
+  <div class="container">
+    <div class="text-center input">
+      <input id="inputData" style="" type="text" placeholder="masukkan data">
+      <button style="background-color: #19376D;" onclick="tambahData()">
+        <svg style="padding-top: 2px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+        </svg>
+      </button>
+    </div>
+    <div class="text-center">
+      <button id="pilih-acak" onclick="pilihDataAcak()" style="width: 100%;">Pilih Data Acak</button>
+    </div>
+    <div id="containerData" class="text-center" style="width: 100%; max-height: 15rem; min-height: 7rem; margin: auto; overflow: auto;">
+    </div>
+    <div id="hapus" style="text-align: center; width: 100%;">
+      <button style="background-color: #df004e; width: 100%; border: none;" onclick="hapusData()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+          <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+        </svg>
+      </button>
+    </div>
   </div>
   <script>
     data = []
