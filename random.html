@@ -63,9 +63,11 @@
     function start() {
       baru = JSON.parse(localStorage.getItem('list_random_system_01'))
       // console.log('baru - 1', baru)
-      for (let i = 0; i < baru.length; i++) {
-        const x = baru[i];
-        tambahData(x)
+      if(baru){
+        for (let i = 0; i < baru.length; i++) {
+          const x = baru[i];
+          tambahData(x)
+        }
       }
     }
     function tambahData(baru) {
@@ -81,15 +83,16 @@
         tag.style.backgroundColor = '#19376D';
         con.appendChild(tag)
         document.getElementById('inputData').value = '';
-        if(!baru) {
+        // if(!baru) {
           data.push(add);
           localStorage.setItem('list_random_system_01', JSON.stringify(data))
-        }
+        // }
       }
     }
     function hapusData() {
       localStorage.setItem('list_random_system_01', JSON.stringify([]))
       document.getElementById('containerData').innerHTML = ''
+      data = []
     }
     async function pilihDataAcak() {
       document.getElementById('pilih-acak').disabled = true

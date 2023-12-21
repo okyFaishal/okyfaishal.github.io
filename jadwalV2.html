@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Visit</title>
+</head>
+<body>
+    <script>
+        // URL tujuan yang ingin dikunjungi
+        const targetUrl = 'http://127.0.0.1:5500/jadwal.html';
+
+        // Buat elemen iframe
+        const iframe = document.createElement('iframe');
+
+        // Atur atribut-src iframe ke URL tujuan
+        iframe.src = targetUrl;
+
+        // Atur atribut style untuk menyembunyikan iframe
+        iframe.style.display = 'none';
+
+        // Tambahkan iframe ke tubuh dokumen
+        document.body.appendChild(iframe);
+
+        // Hapus iframe setelah beberapa saat (opsional)
+        setTimeout(() => {
+            document.body.removeChild(iframe);
+        }, 5000); // Hapus iframe setelah 5 detik (gantilah dengan yang sesuai)
+
+    </script>
+</body>
+</html>
