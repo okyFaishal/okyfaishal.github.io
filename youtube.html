@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    } */
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      max-width: 60vw;
+      padding: 10px;
+      margin: auto; 
+    }
+    .button-youtube{
+      margin: 10px;
+      padding: 15px;
+      background-color: #19376D;
+      color: #fff;
+      border-radius: 5px;
+      border: none;
+      font-size: 15px;
+      
+    }
+  </style>
+  <title>Youtube</title>
+</head>
+<body>
+  <h2 id="nama-youtube">Gagasan 3 Bacapres untuk Penguatan KPK dan Polisi</h2>
+  <div style="display: flex; justify-content: center;">
+    <iframe id="youtube" style="margin: 0; width:60vw; height: 500px;" src="https://www.youtube-nocookie.com/embed/MImCUn9LVYo?si=oujRLsQlp4SSQNEz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <div id="containerData" class="container text-center" style="width: 100%; margin: auto; overflow: auto;">
+  </div>
+  <script>
+    data = [
+      {
+        nama: 'Gagasan 3 Bacapres untuk Penguatan KPK dan Polisi | Mata Najwa',
+        link: 'https://www.youtube-nocookie.com/embed/MImCUn9LVYo?si=oujRLsQlp4SSQNEz',
+      },
+      {
+        nama: 'Ganjar Pranowo Bicara Gagasan | Mata Najwa',
+        link: 'https://www.youtube-nocookie.com/embed/2YXKMHNevpo?si=xttMYcUR5-Vnizq3',
+      },
+      {
+        nama: 'Prabowo Subianto Bicara Gagasan | Mata Najwa',
+        link: 'https://www.youtube-nocookie.com/embed/V4W5Nokc7MU?si=w7ZcTb6AIl5JmuFz',
+      },
+      {
+        nama: 'Anies Baswedan Bicara Gagasan | Mata Najwa',
+        link: 'https://www.youtube-nocookie.com/embed/kiaKPHMABuc?si=N6YXrhBtsIbAcq1-',
+      },
+      {
+        nama: '4 Generasi Bicara Generation Gap | Mata Najwa',
+        link: 'https://www.youtube-nocookie.com/embed/lt574EC9TMk?si=QgVm_cLRwNht_2qi',
+      },
+      {
+        nama: 'Smartphone Pilihan TERBAIK, PREMIUM 7-30 Juta Rupiah - Akhir 2023, Awal 2024',
+        link: 'https://www.youtube-nocookie.com/embed/ree6xNGsO2E?si=fP1wISA7tuU-j35I',
+      },
+      {
+        nama: 'Pengen inovasi? Mari kita cari HUAWEI! 😎',
+        link: 'https://www.youtube-nocookie.com/embed/Yj3uVJK8Skg?si=EizbAr_jFRbSuPWh',
+      },
+      {
+        nama: 'Editor rewel minta NAMBAH LAPTOP GAMING 70JUTA...',
+        link: 'https://www.youtube-nocookie.com/embed/3BXnpwrS8GU?si=1umq9icqrYn2LRuL',
+      },
+      {
+        nama: 'Spec PS5 Pro bocor, Setara apa kalo di PC Desktop?',
+        link: 'https://www.youtube-nocookie.com/embed/m0MPEW2APLw?si=2mHUmGI3uF6uYhZn',
+      },
+      {
+        nama: 'KENAPA 1 JAM = 7 TAHUN di Interstellar? Penjelasan Sains Film Interstellar',
+        link: 'https://www.youtube-nocookie.com/embed/4j-vNPAGKhg?si=lFOFMI6e1h1r-mDw',
+      },
+      {
+        nama: 'Kenapa Orang Miskin Akan Selalu Miskin? | Psychology of Finance #1',
+        link: 'https://www.youtube-nocookie.com/embed/luIxdGs1aH8?si=FMCmk-pFvyBnfmOK',
+      },
+      {
+        nama: 'Sederhana Tapi GenZ Gak Punya',
+        link: 'https://www.youtube-nocookie.com/embed/cXmc1g1Kgpc?si=uyrbz7qviXkDIiww',
+      },
+      {
+        nama: 'Indonesia Bakal Resesi 2024',
+        link: 'https://www.youtube-nocookie.com/embed/lemVATfxZ-Q?si=asuD2JZ4awf30eyy',
+      },
+      {
+        nama: 'BOIKOT ISRAEL: BIKIN DAMAI ATAU RUGI? Kita Harus Gimana?',
+        link: 'https://www.youtube-nocookie.com/embed/6cLsLLIM8sw?si=Iik0EO2E3pUAe5z0',
+      },
+    ]
+    start()
+      document.querySelector("#containerData").addEventListener('click', function (e) {
+      const youtube = document.getElementById('youtube')
+      // console.log('e.target', e.target.innerHTML)
+      // console.log('e.target', document.getElementById('nama-youtube').innerHTML)
+      if(e.target && e.target.link){
+        document.getElementById('youtube').src = e.target.link
+        document.getElementById('nama-youtube').innerHTML = e.target.innerHTML
+      }
+    })
+    function start() {
+      for (let i = 0; i < data.length; i++) {
+        const x = data[i];
+        tambahData({...x, index: i+1})
+      }
+    }
+    function tambahData(baru) {
+      const con = document.getElementById('containerData')
+      if (baru) {
+        let tag = document.createElement('button')
+        // let val = document.createTextNode(`${baru.index}. ${baru.nama}`)
+        let val = document.createTextNode(`${baru.nama}`)
+        tag.link = baru.link
+        tag.id = 'pilih-video'
+        tag.appendChild(val)
+        tag.className = 'button-youtube';
+        con.appendChild(tag)
+      }
+    }
+  </script>
+</body>
+</html>
